@@ -61,7 +61,7 @@ const TractorDetail = ({ params }) => {
           >
             <div>
               <h2 className="text-3xl font-black text-dark tracking-tight uppercase mb-6">Introduction</h2>
-              <p className="text-xl text-gray-600 font-medium leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed">
                 {model.detailedDesc}
               </p>
             </div>
@@ -103,10 +103,10 @@ const TractorDetail = ({ params }) => {
               {Object.entries(model.specs).map(([key, value], i) => (
                 <div 
                   key={key} 
-                  className={`flex justify-between items-center p-8 border-b border-gray-200 ${i % 2 === 0 ? "bg-white/50" : "bg-transparent"}`}
+                  className={`flex flex-wrap justify-between items-center p-6 md:p-8 border-b border-gray-200 gap-2 ${i % 2 === 0 ? "bg-white/50" : "bg-transparent"}`}
                 >
                   <span className="text-xs font-black uppercase tracking-widest text-gray-400">{key.replace(/([A-Z])/g, ' $1').trim()}</span>
-                  <span className="text-lg font-black text-dark uppercase tracking-tight">{value}</span>
+                  <span className="text-xl md:text-2xl font-black text-dark uppercase tracking-tight">{value}</span>
                 </div>
               ))}
             </div>

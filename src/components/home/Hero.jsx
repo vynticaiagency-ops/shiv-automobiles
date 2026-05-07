@@ -38,7 +38,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-3xl mx-auto text-xl text-gray-600 font-medium leading-relaxed mb-12"
+          className="max-w-3xl mx-auto text-lg md:text-xl text-gray-600 font-medium leading-relaxed mb-12"
         >
           {businessInfo.name} — Your trusted partner for Swaraj Tractors in Junagadh, Mendarda, Visavadar & Bhesan. Founded in 2025. 100+ tractors delivered in our first year.
         </motion.p>

@@ -36,7 +36,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="flex flex-col group">
           <span className={cn(
-            "text-2xl font-black tracking-tighter leading-none transition-colors",
+            "text-xl md:text-2xl font-black tracking-tighter leading-none transition-colors",
             scrolled ? "text-primary" : "text-primary" 
           )}>
             SHIV AUTOMOBILES
