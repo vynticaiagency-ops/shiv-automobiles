@@ -35,26 +35,42 @@ const EvergreenModels = () => {
               transition={{ delay: i * 0.1 }}
               className="group bg-white rounded-[3rem] border border-gray-100 overflow-hidden shadow-xl shadow-gray-200/50 flex flex-col"
             >
-              {/* Image Placeholder */}
-              <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 relative flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Tractor size={200} className="text-primary" />
-                  </div>
-                </div>
-                <div className="relative z-10 text-center p-8">
-                  <span className="text-xs font-black uppercase tracking-widest text-primary mb-2 block">{model.category}</span>
-                  <h4 className="text-3xl font-black text-dark mb-1">{model.name}</h4>
-                  <p className="text-sm font-bold text-secondary uppercase tracking-tight">{model.tagline}</p>
-                </div>
-                <div className="absolute top-6 right-6 bg-accent text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5">
+              {/* Tractor Image */}
+              <div className="aspect-[4/3] bg-white relative flex items-center justify-center overflow-hidden group">
+                <motion.img
+                  initial={{ scale: 1.1 }}
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ duration: 0.8 }}
+                  src={model.image}
+                  alt={model.name}
+                  className="w-full h-full object-contain p-8 relative z-10"
+                />
+                
+                {/* Decorative Background Element */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 -z-0" />
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl" />
+                
+                {/* Badge */}
+                <div className="absolute top-6 right-6 bg-accent text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5 shadow-lg shadow-accent/20 z-20">
                   <ShieldCheck size={14} /> Evergreen
+                </div>
+
+                {/* Category Floating Badge */}
+                <div className="absolute top-6 left-6 z-20">
+                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary bg-white/90 backdrop-blur-sm border border-primary/10 px-4 py-2 rounded-xl shadow-sm">
+                    {model.category}
+                   </span>
                 </div>
               </div>
 
               {/* Content */}
               <div className="p-10 flex-grow flex flex-col">
-                <div className="flex items-center justify-between mb-6">
+                <div className="mb-6">
+                  <h4 className="text-3xl font-black text-dark mb-1 uppercase tracking-tighter italic">{model.name}</h4>
+                  <p className="text-xs font-bold text-secondary uppercase tracking-[0.2em]">{model.tagline}</p>
+                </div>
+
+                <div className="flex items-center justify-between mb-8">
                   <div className="text-center bg-gray-50 rounded-2xl px-6 py-3 border border-gray-100">
                     <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Power</p>
                     <p className="text-xl font-black text-primary">{model.hp} HP</p>

@@ -11,9 +11,9 @@ const TractorsPage = () => {
   const filteredTractors = tractors.filter((t) => {
     if (filter === "All") return true;
     if (filter === "Evergreen") return t.evergreen;
-    if (filter === "Mini") return t.hp < 30;
-    if (filter === "Medium") return t.hp >= 30 && t.hp < 40;
-    if (filter === "Heavy") return t.hp >= 40;
+    if (filter === "Compact") return t.hp < 35;
+    if (filter === "Utility") return t.hp >= 35 && t.hp < 50;
+    if (filter === "Heavy Duty") return t.hp >= 50;
     return true;
   });
 
@@ -27,7 +27,7 @@ const TractorsPage = () => {
             <span className="text-primary">Tractors</span>
           </h1>
           <p className="max-w-3xl mx-auto text-xl text-gray-600 font-bold">
-            Browse our complete range of 8 Swaraj tractor models available in Junagadh.
+            Browse our complete range of 9 Swaraj tractor models available in Junagadh.
           </p>
         </div>
       </section>
@@ -35,7 +35,7 @@ const TractorsPage = () => {
       {/* Filters */}
       <section className="py-10 px-6 sticky top-20 z-30 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-4">
-          {["All", "Evergreen", "Mini", "Medium", "Heavy"].map((f) => (
+          {["All", "Evergreen", "Compact", "Utility", "Heavy Duty"].map((f) => (
             <button
               key={f}
               onClick={() => setFilter(f)}
@@ -43,7 +43,7 @@ const TractorsPage = () => {
                 filter === f ? "bg-primary text-white shadow-lg shadow-primary/20" : "bg-gray-100 text-gray-500 hover:bg-gray-200"
               }`}
             >
-              {f === "Mini" ? "< 30 HP" : f === "Medium" ? "30-40 HP" : f === "Heavy" ? "40+ HP" : f}
+              {f === "Compact" ? "< 35 HP" : f === "Utility" ? "35-48 HP" : f === "Heavy Duty" ? "50+ HP" : f}
             </button>
           ))}
         </div>
@@ -61,26 +61,39 @@ const TractorsPage = () => {
               transition={{ delay: i * 0.05 }}
               className="group bg-white rounded-[3rem] border border-gray-100 overflow-hidden shadow-xl shadow-gray-200/50 flex flex-col"
             >
-              {/* Image Placeholder */}
-              <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 relative flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity">
-                  <TractorIcon size={180} className="text-primary" />
-                </div>
-                <div className="relative z-10 text-center p-8">
-                  <span className="text-xs font-black uppercase tracking-widest text-primary mb-2 block">{model.category}</span>
-                  <h4 className="text-3xl font-black text-dark mb-1">{model.name}</h4>
-                  <p className="text-sm font-bold text-secondary uppercase tracking-tight">{model.tagline}</p>
-                </div>
+              {/* Tractor Image */}
+              <div className="aspect-[4/3] bg-white relative flex items-center justify-center overflow-hidden group">
+                <img
+                  src={model.image}
+                  alt={model.name}
+                  className="w-full h-full object-contain p-8 relative z-10 group-hover:scale-110 transition-transform duration-500"
+                />
+                
+                {/* Decorative Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-100 -z-0" />
+                <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl" />
+                
                 {model.evergreen && (
-                  <div className="absolute top-6 right-6 bg-accent text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5">
+                  <div className="absolute top-6 right-6 bg-accent text-white px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest flex items-center gap-1.5 shadow-lg shadow-accent/20 z-20">
                     <ShieldCheck size={14} /> Bestseller
                   </div>
                 )}
+
+                <div className="absolute top-6 left-6 z-20">
+                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary bg-white/90 backdrop-blur-sm border border-primary/10 px-4 py-2 rounded-xl shadow-sm">
+                    {model.category}
+                   </span>
+                </div>
               </div>
 
               {/* Content */}
               <div className="p-10 flex-grow flex flex-col">
-                <div className="flex items-center justify-between mb-6">
+                <div className="mb-6">
+                  <h4 className="text-3xl font-black text-dark mb-1 uppercase tracking-tighter italic">{model.name}</h4>
+                  <p className="text-xs font-bold text-secondary uppercase tracking-[0.2em]">{model.tagline}</p>
+                </div>
+
+                <div className="flex items-center justify-between mb-8">
                   <div className="text-center bg-gray-50 rounded-2xl px-6 py-3 border border-gray-100">
                     <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">Power</p>
                     <p className="text-xl font-black text-primary">{model.hp} HP</p>

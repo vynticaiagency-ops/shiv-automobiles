@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const stats = [
   { value: "100+", label: "Tractors Delivered", sub: "In Our First Year" },
   { value: "4", label: "Districts Served", sub: "Junagadh | Mendarda | Visavadar | Bhesan" },
-  { value: "8", label: "Models Available", sub: "All Top Swaraj Models" },
+  { value: "9", label: "Models Available", sub: "All Top Swaraj Models" },
   { value: "4.9★", label: "Customer Rating", sub: "Rated by Happy Farmers" },
   { value: "2025", label: "Year Founded", sub: "Fresh Start. Strong Foundation." },
   { value: "100%", label: "Genuine Products", sub: "Authorized Swaraj Dealer" },

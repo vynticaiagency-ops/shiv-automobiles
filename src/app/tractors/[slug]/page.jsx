@@ -35,20 +35,25 @@ const TractorDetail = ({ params }) => {
       <section className="py-20 px-6 md:px-12 bg-gray-50">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="aspect-[4/3] bg-white rounded-[4rem] border border-gray-100 shadow-2xl relative flex items-center justify-center p-12 overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="aspect-square lg:aspect-[4/3] bg-white rounded-[4rem] border border-gray-100 shadow-2xl relative flex items-center justify-center p-12 overflow-hidden group"
           >
-            <div className="absolute inset-0 opacity-5 flex items-center justify-center">
-              <Tractor size={300} className="text-primary" />
-            </div>
-            <div className="relative z-10 text-center">
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-secondary mb-4 block">Swaraj {model.hp} HP</span>
-              <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-dark mb-4 leading-none uppercase">{model.name}</h1>
-              <p className="text-xl font-bold text-primary uppercase tracking-tight">{model.tagline}</p>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white" />
+            
+            <motion.img
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              src={model.image}
+              alt={model.name}
+              className="relative z-10 w-full h-full object-contain drop-shadow-2xl"
+            />
+
+            <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+            
             {model.evergreen && (
-              <div className="absolute top-10 right-10 bg-accent text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest flex items-center gap-2">
+              <div className="absolute top-10 right-10 bg-accent text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest flex items-center gap-2 shadow-xl shadow-accent/20 z-20">
                 <ShieldCheck size={18} /> Bestseller
               </div>
             )}
@@ -60,7 +65,11 @@ const TractorDetail = ({ params }) => {
             className="space-y-10"
           >
             <div>
-              <h2 className="text-3xl font-black text-dark tracking-tight uppercase mb-6">Introduction</h2>
+              <span className="text-xs font-black uppercase tracking-[0.4em] text-primary mb-4 block">Swaraj {model.hp} HP Class</span>
+              <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-dark mb-2 leading-none uppercase italic">{model.name}</h1>
+              <p className="text-xl font-bold text-secondary uppercase tracking-tight mb-8">{model.tagline}</p>
+              
+              <h2 className="text-xl font-black text-dark tracking-tight uppercase mb-4 border-b-2 border-primary w-fit">Overview</h2>
               <p className="text-lg md:text-xl text-gray-600 font-medium leading-relaxed">
                 {model.detailedDesc}
               </p>
@@ -150,11 +159,14 @@ const TractorDetail = ({ params }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {tractors.filter(t => t.slug !== model.slug).slice(0, 4).map((related) => (
               <Link key={related.slug} href={`/tractors/${related.slug}`} className="group">
-                <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-200/40 hover:scale-105 transition-all">
-                  <p className="text-[10px] font-black text-secondary uppercase tracking-[0.2em] mb-2">{related.hp} HP</p>
-                  <h4 className="text-xl font-black text-dark group-hover:text-primary transition-colors">{related.name}</h4>
-                  <p className="mt-4 text-xs font-bold text-gray-400 group-hover:text-dark transition-colors flex items-center gap-2">
-                    View Details <ChevronRight size={14} />
+                <div className="bg-white p-6 rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-200/40 hover:scale-105 transition-all overflow-hidden">
+                  <div className="aspect-video bg-gray-50 rounded-2xl mb-4 flex items-center justify-center p-4">
+                    <img src={related.image} alt={related.name} className="w-full h-full object-contain" />
+                  </div>
+                  <p className="text-[10px] font-black text-secondary uppercase tracking-[0.2em] mb-1">{related.hp} HP Class</p>
+                  <h4 className="text-xl font-black text-dark group-hover:text-primary transition-colors italic">{related.name}</h4>
+                  <p className="mt-4 text-[10px] font-black text-gray-400 group-hover:text-dark transition-colors flex items-center gap-2 uppercase tracking-widest">
+                    View Specs <ChevronRight size={12} />
                   </p>
                 </div>
               </Link>

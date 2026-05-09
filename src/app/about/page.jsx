@@ -6,7 +6,7 @@ import { Tractor, Handshake, MapPin, Trophy, ShieldCheck, Star } from "lucide-re
 const achievements = [
   { num: "100+", label: "Tractors Delivered", icon: Tractor, desc: "100+ Swaraj tractors delivered to farmers across 4 districts in our very first year." },
   { num: "4", label: "Districts Served", icon: MapPin, desc: "We serve Junagadh, Mendarda, Visavadar and Bhesan — bringing Swaraj tractors closer to more farmers." },
-  { num: "5", label: "Evergreen Models", icon: Star, desc: "717 ES, 733 FE, 735 XT, 742 XT and 744 FE — our 5 best selling models loved by local farmers." },
+  { num: "5", label: "Evergreen Models", icon: Star, desc: "717 ES, 733 FE, 735 FE, 742 XT and 744 FE — our 5 best selling models loved by local farmers." },
   { num: "4.9★", label: "Customer Rating", icon: Trophy, desc: "Our farmers rate us 4.9 out of 5 for service, honesty, price and after-sale support." },
   { num: "1", label: "Year. 100+ Sales.", icon: Trophy, desc: "100+ tractors sold in just the first year of business. A record built on farmer trust." },
   { num: "100%", label: "Genuine Products", icon: ShieldCheck, desc: "Every tractor we sell is 100% genuine Swaraj with full manufacturer warranty." },
